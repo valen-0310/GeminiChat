@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot Web</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <main class="app">
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <div class="profile">
+                    <div class="avatar bot-avatar">🤖</div>
+                    <div>
+                        <strong>Mis chats</strong>
+                        <small>ChatBot Web</small>
+                    </div>
+                </div>
+                <button class="icon-btn" id="clearBtn" title="Limpiar chat">🗑️</button>
+            </header>
+
+            <div class="search">
+                <span>🔎</span>
+                <input id="searchInput" type="text" placeholder="Buscar o iniciar un chat">
+            </div>
+
+            <section class="chat-list">
+                <div class="chat-item active">
+                    <div class="avatar bot-avatar">🤖</div>
+                    <div class="chat-preview">
+                        <div class="chat-row">
+                            <strong>Asistente</strong>
+                            <span id="lastTime">Ahora</span>
+                        </div>
+                        <p id="lastPreview">¡Hola! 👋 Soy tu asistente...</p>
+                    </div>
+                </div>
+            </section>
+        </aside>
+
+        <section class="chat">
+            <header class="chat-header">
+                <div class="profile">
+                    <div class="avatar bot-avatar">🤖</div>
+                    <div>
+                        <strong>Asistente</strong>
+                        <small><span class="online-dot"></span> en línea · RAG activo</small>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn" title="Buscar">🔎</button>
+                    <button class="icon-btn" title="Más opciones">⋮</button>
+                </div>
+            </header>
+
+            <div class="messages" id="messages"></div>
+
+            <form class="composer" id="messageForm">
+                <button type="button" class="icon-btn" title="Emoji" id="emojiBtn">😊</button>
+                <input
+                    id="messageInput"
+                    type="text"
+                    autocomplete="off"
+                    placeholder="Escribe un mensaje"
+                    maxlength="500"
+                >
+                <button class="send-btn" type="submit" title="Enviar">➤</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

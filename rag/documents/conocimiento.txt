@@ -1,0 +1,26 @@
+INFORMACIÓN GENERAL DEL CHATBOT
+Este proyecto implementa una aplicación web de chatbot utilizando Python y Flask. La interfaz permite que el usuario escriba preguntas y reciba respuestas mediante un chat estilo WhatsApp.
+
+ARQUITECTURA RAG
+RAG significa Retrieval-Augmented Generation, o generación aumentada mediante recuperación. La arquitectura busca información relevante en una base de conocimiento antes de construir la respuesta.
+
+FLUJO DE UNA PREGUNTA
+Cuando el usuario escribe una pregunta, Flask recibe el mensaje mediante el endpoint /api/messages. El Retriever analiza la pregunta y busca fragmentos relacionados dentro de la base de conocimiento. Luego el Generator utiliza esos fragmentos como contexto para construir la respuesta.
+
+RECUPERACIÓN
+El proyecto utiliza TF-IDF para representar la pregunta y los fragmentos como vectores. Después utiliza similitud coseno para determinar qué fragmentos tienen mayor relación con la pregunta. Los fragmentos más relacionados se utilizan como contexto.
+
+BASE DE CONOCIMIENTO
+La base de conocimiento se encuentra en rag/documents/conocimiento.txt. Para adaptar el chatbot al proyecto de cada estudiante, se debe reemplazar el contenido de este archivo por la información propia del proyecto.
+
+FLASK
+Flask es el framework utilizado para construir el servidor web. La ruta / muestra la interfaz. GET /api/messages devuelve el historial. POST /api/messages recibe una pregunta y ejecuta el flujo RAG. DELETE /api/messages limpia el historial.
+
+INTERFAZ
+La aplicación tiene una interfaz inspirada en WhatsApp. El usuario puede escribir mensajes, ver respuestas, consultar las horas y limpiar la conversación.
+
+RESPUESTAS
+El chatbot no depende de respuestas escritas con condiciones como if usuario dice hola. Las respuestas se basan en fragmentos recuperados de la base de conocimiento. Si no encuentra información relacionada, indica que no tiene suficiente información.
+
+PERSONALIZACIÓN
+Para utilizar el chatbot con un proyecto académico específico, se recomienda colocar en conocimiento.txt información sobre objetivo, funcionalidades, usuarios, procesos, entidades, reglas de negocio, módulos y preguntas frecuentes.
